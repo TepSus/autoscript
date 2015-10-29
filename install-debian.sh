@@ -73,12 +73,15 @@ wget -O dropmon "https://raw.github.com/yurisshOS/debian7os/master/dropmon.sh"
 wget -O userlogin.sh "https://raw.github.com/yurisshOS/debian7os/master/userlogin.sh"
 wget -O userexpired.sh "https://raw.github.com/yurisshOS/debian7os/master/userexpired.sh"
 wget -O expire.sh "https://raw.github.com/yurisshOS/debian7os/master/expire.sh"
-echo "@reboot root /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 */6 * * * root /sbin/reboot" > /etc/cron.d/reboot
-echo "* * * * * service dropbear restart" > /etc/cron.d/dropbear
 chmod +x bench-network.sh
 chmod +x speedtest_cli.py
 chmod +x ps_mem.py
+chmod +x userlogin.sh
+chmod +x userexpired.sh
+echo "*/10 * * * * root /root/userexpired.sh" > /etc/cron.d/userexpired
+echo "0 */6 * * * root /sbin/reboot" > /etc/cron.d/reboot
+echo "* * * * * service dropbear restart" > /etc/cron.d/dropbear
+
 
 clear
 
