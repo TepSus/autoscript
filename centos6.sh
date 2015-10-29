@@ -242,10 +242,16 @@ wget -O bench-network.sh "https://raw.github.com/ardi85/austoscript/bench-networ
 wget -O ps_mem.py "https://raw.github.com/pixelb/ps_mem/master/ps_mem.py"
 #curl http://internetku.net/files/ceklogin.sh > ceklogin.sh
 wghet https://github.com/ardi85/autoscript/raw/master/ceklogin.sh
+wget -O userlogin.sh "https://raw.github.com/yurisshOS/centos6/master/userlogin.sh"
+wget -O userexpired.sh "https://raw.github.com/yurisshOS/centos6/master/userexpired.sh"
 chmod +x speedtest_cli.py
 chmod +x ps_mem.py
 sed -i 's/auth.log/secure/g' ceklogin.sh
 chmod +x ceklogin.sh
+chmod +x userlogin.sh
+chmod +x userexpired.sh
+echo "*/10 * * * * root /root/userexpired.sh" >> /etc/cron.d/userexpired
+echo "0 */6 * * * root /sbin/reboot" > /etc/cron.d/reboot
 
 # cron
 service crond start
